@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "integer",
+      "description": "The unique identifier of the task to delete."
+    }
+  },
+  "required": ["task_id"]
+}

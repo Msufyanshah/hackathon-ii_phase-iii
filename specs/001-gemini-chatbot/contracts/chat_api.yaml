@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: AI-Powered Todo Chatbot API
+  version: 1.0.0
+paths:
+  /api/v1/chats/{conversation_id}/messages:
+    post:
+      summary: Send a message to the AI chatbot within a conversation
+      parameters:
+        - in: path
+          name: conversation_id
+          schema:
+            type: string
+            format: uuid # Assuming UUID for conversation_id
+          required: true
+          description: Unique identifier of the conversation. If new, client generates UUID or requests generic /chat to create one.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - content
+              properties:
+                content:
+                  type: string
+                  description: The user's message to the chatbot.
+      responses:
+        '200':
+          description: Successful response from the AI chatbot.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      role:
+                        type: string
+                        enum: ['model', 'user', 'tool'] # Role of the sender of the message
+                        description: Role of the sender of the message.
+                      content:
+                        type: string
+                        description: The AI's natural language response.
+                    required:
+                      - role
+                      - content
+                  tool_activity:
+                    type: array
+                    items:
+                      type: object
+                      description: Optional: For debugging/UI feedback about tool usage.
+                    description: Optional array detailing tool calls made by the AI.
+        '401':
+          description: Unauthorized - authentication token is missing or invalid.
+        '404':
+          description: Conversation not found.
+        '500':
+          description: Internal server error.
+tags:
+  - Chat

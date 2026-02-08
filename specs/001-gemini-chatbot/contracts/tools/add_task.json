@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "string",
+      "description": "The title/description of the task to add."
+    }
+  },
+  "required": ["content"]
+}

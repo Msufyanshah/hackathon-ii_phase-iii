@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["pending", "completed", "all"],
+      "description": "The status of tasks to list."
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Maximum number of tasks to return.",
+      "default": 10
+    }
+  },
+  "required": ["status"]
+}
