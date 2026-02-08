@@ -1,4 +1,29 @@
-# Phase III Constitution — AI-Powered Todo Chatbot (Gemini Edition)
+---
+id: 0002
+title: Update Phase III Project Constitution (Gemini Edition)
+stage: constitution
+date: 2026-02-08
+surface: agent
+model: gemini-1.5-pro
+feature: none
+branch: main
+user: sufi
+command: /sp.constitution update my constitution in this form: # Phase III Constitution — AI-Powered Todo Chatbot (Gemini Edition)...
+labels: ["constitution"]
+links:
+  spec: null
+  ticket: null
+  adr: null
+  pr: null
+files:
+  - .specify/memory/constitution.md
+tests:
+
+---
+
+## Prompt
+
+/sp.constitution update my constitution in this form: # Phase III Constitution — AI-Powered Todo Chatbot (Gemini Edition)
 
 ## 1. Purpose
 Phase III introduces an AI-powered conversational interface for managing todos via natural language. This phase adds **intelligence only**. No frontend or backend business logic is to be rebuilt or modified beyond what is strictly required to support chat-based interaction.
@@ -132,3 +157,22 @@ If an implementation:
 *   Stores conversation state in a Python/Node variable (Global state).
 *   Allows the agent to write SQL directly.
 ...it is considered out of scope and a violation of the Spec-Driven Development protocol.
+
+## Response snapshot
+
+The project constitution has been updated with the provided content to `.specify/memory/constitution.md`. A Prompt History Record (ID 0002) was manually created due to an issue with the PHR script.
+
+## Outcome
+
+- ✅ Impact: Constitution updated.
+- 🧪 Tests: N/A
+- 📁 Files: 1 file modified.
+- 🔁 Next prompts: Next steps will depend on user's request.
+- 🧠 Reflection: Manually created PHR due to script failure.
+
+## Evaluation notes (flywheel)
+
+- Failure modes observed: PHR creation script failed.
+- Graders run and results (PASS/FAIL): N/A
+- Prompt variant (if applicable): N/A
+- Next experiment (smallest change to try): Investigate PHR script execution.

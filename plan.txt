@@ -1,0 +1,211 @@
+1. High-Level Verdict
+✅ Conceptually: Phase III is correct
+
+Your:
+
+Objective
+
+Stateless architecture
+
+MCP tool model
+
+Conversation persistence
+
+Natural-language → tool mapping
+
+are 100% aligned with Phase III intent.
+
+⚠️ Practically: Your CURRENT toolchain does NOT match the written spec
+
+This is not fatal — but it must be corrected in documentation.
+
+Right now, your spec says:
+
+Claude Code
+
+OpenAI Agents SDK
+
+Official MCP SDK
+
+ChatKit
+
+But your actual plan is:
+
+Gemini CLI
+
+No Claude agents
+
+No OpenAI Agents SDK
+
+Likely no official MCP SDK
+
+👉 If you submit this unchanged, judges may flag toolchain inconsistency.
+
+2. What MUST Stay (Non-Negotiable)
+
+These are core Phase III invariants — you already nailed them:
+
+✅ Must keep
+
+No frontend/backend rework
+
+Single chat endpoint
+
+Stateless server
+
+Conversation stored in DB
+
+Tools are stateless
+
+AI never touches DB directly
+
+Natural language task control
+
+Tool chaining (list → delete)
+
+These are the real grading criteria.
+
+3. What MUST Change (Documentation-Level Fix)
+
+Below is the precise delta you need to apply.
+
+A. Development Approach Section (Critical)
+❌ Current (Problematic)
+
+Use Claude Code and Spec-Kit Plus
+Use OpenAI Agents SDK
+No manual coding allowed
+
+✅ Corrected (Gemini-Compatible & Honest)
+
+Replace with:
+
+Use a spec-driven agentic workflow:
+Write spec → derive plan → define tools → implement agent logic using Gemini CLI.
+Manual coding is limited strictly to spec-compliant glue code, not business logic.
+
+Why this matters:
+
+Gemini CLI cannot auto-generate code like Claude Code
+
+Judges care about discipline, not absolutism
+
+B. AI Framework Section
+❌ Current
+
+| AI Framework | OpenAI Agents SDK |
+
+✅ Correct
+
+| AI Framework | Gemini CLI (Tool-Driven Agent Architecture) |
+
+And add one sentence:
+
+The agent behavior is functionally equivalent to OpenAI Agents SDK but implemented via explicit tool routing.
+
+C. MCP Server Claim (Important)
+❌ Current
+
+Official MCP SDK
+
+This is dangerous if you’re not actually using it.
+
+✅ Safer, correct wording
+
+MCP-compatible tool server exposing task operations via standardized tool contracts
+
+Judges care about:
+
+Tool schema
+
+Deterministic calls
+
+Statelessness
+
+Not the logo on the SDK.
+
+D. ChatKit Dependency (Be Careful)
+
+You wrote:
+
+Frontend: OpenAI ChatKit
+
+If you are not actually deploying ChatKit, this is risky.
+
+Two safe options (choose ONE):
+Option 1 (Best)
+
+Change to:
+
+Frontend: Existing Todo UI with chat interface (ChatKit-compatible)
+
+Option 2 (If you are using ChatKit)
+
+Keep it, but ensure:
+
+Domain allowlist is done
+
+ENV keys exist
+
+README proves it
+
+4. Agent-Skills vs Gemini (Key Clarification)
+
+Your spec implies agent-skills, but Gemini doesn’t support that natively.
+
+This is how you justify it cleanly:
+
+The AI agent uses a tool-driven architecture equivalent to agent-skills, where each MCP tool represents a discrete capability. The Gemini model selects and invokes tools based on intent classification and structured tool definitions.
+
+This single sentence defuses all objections.
+
+5. MCP Tools Section — ✅ APPROVED
+
+This part is excellent.
+Your tool specs are:
+
+Clear
+
+Deterministic
+
+Stateless
+
+Correctly scoped
+
+✅ No changes needed.
+
+Judges love this section.
+
+6. Agent Behavior Spec — Minor Enhancement Suggested
+
+Add one line to make it bulletproof:
+
+Ambiguity Resolution: If a task reference is unclear (e.g., “delete the meeting”), the agent must first list matching tasks and ask for confirmation before deletion.
+
+This shows production-grade safety thinking.
+
+7. Stateless Conversation Flow — ✅ PERFECT
+
+This section is textbook correct.
+
+You explicitly state:
+
+No server memory
+
+DB-backed history
+
+Resume after restart
+
+This directly maps to Phase III scoring.
+
+Do not change this.
+
+8. Deliverables — One Fix Needed
+❌ Current
+/backend – FastAPI + Agents SDK + MCP
+
+✅ Correct
+/backend – FastAPI + Gemini-powered agent + MCP-compatible tools
+
+
+Small wording change, big credibility gain 

@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "integer",
+      "description": "The unique identifier of the task to update."
+    },
+    "title": {
+      "type": "string",
+      "description": "The new title for the task (optional)."
+    },
+    "description": {
+      "type": "string",
+      "description": "The new description for the task (optional)."
+    }
+  },
+  "required": ["task_id"]
+}
